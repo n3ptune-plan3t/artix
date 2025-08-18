@@ -22,6 +22,6 @@ jobs:
       - name: Upload ISO as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: downloaded-iso
-          path: downloaded.iso
+          name: artix-xfce-s6-xlibre-20250806-x86_64.iso
+          path: artix-xfce-s6-xlibre-20250806-x86_64.iso
           retention-days: 5 # Artifact retention period (adjust as needed)
