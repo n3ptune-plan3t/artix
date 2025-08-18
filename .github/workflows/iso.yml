@@ -15,10 +15,10 @@ jobs:
 
       - name: Download ISO
         run: |
-          curl -L -o artix-xfce-s6-xlibre-20250806-x86_64.iso "<ISO_DOWNLOAD_LINK>"
+          curl -L -o artix-xfce-s6-xlibre-20250806-x86_64.iso "$ISO_DOWNLOAD_LINK"
         env:
-          ISO_DOWNLOAD_LINK: "https://iso.artixlinux.org/testing-iso/artix-xfce-s6-xlibre-20250806-x86_64.iso" # Replace with your ISO link
-
+          ISO_DOWNLOAD_LINK: "https://iso.artixlinux.org/testing-iso/artix-xfce-s6-xlibre-20250806-x86_64.iso"
+          
       - name: Upload ISO as artifact
         uses: actions/upload-artifact@v4
         with:
