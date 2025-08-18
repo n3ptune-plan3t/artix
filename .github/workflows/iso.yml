@@ -1,0 +1,27 @@
+name: Download ISO
+
+on:
+  workflow_dispatch: # Allows manual triggering of the workflow
+  push: # Runs when code is pushed to the main branch
+    branches:
+      - main
+
+jobs:
+  download-iso:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download ISO
+        run: |
+          curl -L -o artix-xfce-s6-xlibre-20250806-x86_64.iso "<ISO_DOWNLOAD_LINK>"
+        env:
+          ISO_DOWNLOAD_LINK: "https://iso.artixlinux.org/testing-iso/artix-xfce-s6-xlibre-20250806-x86_64.iso" # Replace with your ISO link
+
+      - name: Upload ISO as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: downloaded-iso
+          path: downloaded.iso
+          retention-days: 5 # Artifact retention period (adjust as needed)
