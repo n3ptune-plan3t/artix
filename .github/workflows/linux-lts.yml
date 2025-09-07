@@ -17,7 +17,7 @@ jobs:
         run: |
           curl -L -o linux-lts 6.12.44-1 "$DOWNLOAD_LINK"
         env:
-          DOWNLOAD_LINK: "https://packages.artixlinux.org/packages/system/x86_64/linux-lts/download/"
+          DOWNLOAD_LINK: "https://mirror1.artixlinux.org/repos/system/os/x86_64/linux-lts-6.12.44-1-x86_64.pkg.tar.zst"
           
       - name: Upload as artifact
         uses: actions/upload-artifact@v4
@@ -36,7 +36,7 @@ jobs:
         run: |
           curl -L -o linux-lts-headers 6.12.44-1 "$DOWNLOAD_LINK"
         env:
-          DOWNLOAD_LINK: "https://packages.artixlinux.org/packages/system/x86_64/linux-lts-headers/download/"
+          DOWNLOAD_LINK: "https://mirror1.artixlinux.org/repos/system/os/x86_64/linux-lts-headers-6.12.44-1-x86_64.pkg.tar.zst"
           
       - name: Upload as artifact
         uses: actions/upload-artifact@v4
