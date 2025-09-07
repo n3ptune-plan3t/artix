@@ -1,0 +1,46 @@
+name: Download Linux-LTS
+
+on:
+  workflow_dispatch: # Allows manual triggering of the workflow
+  push: # Runs when code is pushed to the main branch
+    branches:
+      - main
+
+jobs:
+  download-lts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download LTS
+        run: |
+          curl -L -o linux-lts 6.12.44-1 "$DOWNLOAD_LINK"
+        env:
+          DOWNLOAD_LINK: "https://packages.artixlinux.org/packages/system/x86_64/linux-lts/download/"
+          
+      - name: Upload as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-lts 6.12.44-1
+          path: linux-lts 6.12.44-1
+          retention-days: 5 # Artifact retention period (adjust as needed)
+  
+  download-lts-headers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download LTS headers
+        run: |
+          curl -L -o linux-lts-headers 6.12.44-1 "$DOWNLOAD_LINK"
+        env:
+          DOWNLOAD_LINK: "https://packages.artixlinux.org/packages/system/x86_64/linux-lts-headers/download/"
+          
+      - name: Upload as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-lts-headers 6.12.44-1
+          path: linux-lts-headers 6.12.44-1
+          retention-days: 5 # Artifact retention period (adjust as needed)
