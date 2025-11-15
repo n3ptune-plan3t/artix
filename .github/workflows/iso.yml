@@ -15,13 +15,13 @@ jobs:
 
       - name: Download ISO
         run: |
-          curl -L -o obarun-JWM-2025.06.13-86-64.iso "$ISO_DOWNLOAD_LINK"
+          curl -L -o artix-plasma--dinit-14-11-2025-x86-64.iso "$ISO_DOWNLOAD_LINK"
         env:
-          ISO_DOWNLOAD_LINK: "https://cloud.server.obarun.org/iso/2025.06.13/obarun-JWM-2025.06.13-x86_64.iso"
+          ISO_DOWNLOAD_LINK: "https://download.artixlinux.org/weekly-iso/artix-plasma-dinit-20251114-x86_64.iso"
           
       - name: Upload ISO as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: obarun-JWM-2025.06.13-86-64.iso
-          path: obarun-JWM-2025.06.13-86-64.iso
+          name: artix-plasma--dinit-14-11-2025-x86-64.iso
+          path: artix-plasma--dinit-14-11-2025-x86-64.iso
           retention-days: 5 # Artifact retention period (adjust as needed)
