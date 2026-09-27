@@ -17,9 +17,9 @@ jobs:
 
       - name: Download Archive
         run: |
-          curl -L -o Basilisk-26.09.24.1.tar.gz "$ARCHIVE_DOWNLOAD_LINK"
+          curl -L -o Basilisk-v26.09.24.1.tar.gz "$ARCHIVE_DOWNLOAD_LINK"
         env:
-          ARCHIVE_DOWNLOAD_LINK: "https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/v26.09.24.1/Basilisk-26.09.24.1.tar.gz"
+          ARCHIVE_DOWNLOAD_LINK: "https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/v26.09.24.1/Basilisk-v26.09.24.1.tar.gz"
 
       - name: Create Release and Upload Asset
         uses: softprops/action-gh-release@v2
@@ -27,6 +27,6 @@ jobs:
           tag_name: v${{ github.run_number }}-${{ github.sha }}
           name: UXP Source Release (${{ github.run_number }})
           body: "Automated release of UXP source archive from Pale Moon repository."
-          files: Basilisk-26.09.24.1.tar.gz
+          files: Basilisk-v26.09.24.1.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
