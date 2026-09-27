@@ -23,7 +23,7 @@ jobs:
           
           curl -L -o "$FILENAME" "$ARCHIVE_DOWNLOAD_LINK"
         env:
-          ARCHIVE_DOWNLOAD_LINK: "https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/v26.09.24.1/Basilisk-v26.09.24.1.tar.gz"
+          ARCHIVE_DOWNLOAD_LINK: "https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/v26.09.24.1.tar.gz"
 
       - name: Create Release and Upload Asset
         uses: softprops/action-gh-release@v2
