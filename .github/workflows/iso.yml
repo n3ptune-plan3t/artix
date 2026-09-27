@@ -1,4 +1,4 @@
-name: Download ISO
+name: Download and Release Archive
 
 on:
   workflow_dispatch: # Allows manual triggering of the workflow
@@ -7,21 +7,26 @@ on:
       - main
 
 jobs:
-  download-iso:
+  release-archive:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # Required to create releases and tags
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Download ISO
+      - name: Download Archive
         run: |
-          curl -L -o uxp.tar.gz "$ISO_DOWNLOAD_LINK"
+          curl -L -o UXP-e59e88bfd59f37fabc15b30ec304f90a410c751f.tar.gz "$ARCHIVE_DOWNLOAD_LINK"
         env:
-          ISO_DOWNLOAD_LINK: "https://repo.palemoon.org/MoonchildProductions/UXP/archive/e59e88bfd59f37fabc15b30ec304f90a410c751f.tar.gz"
-          
-      - name: Upload ISO as artifact
-        uses: actions/upload-artifact@v4
+          ARCHIVE_DOWNLOAD_LINK: "https://repo.palemoon.org/MoonchildProductions/UXP/archive/e59e88bfd59f37fabc15b30ec304f90a410c751f.tar.gz"
+
+      - name: Create Release and Upload Asset
+        uses: softprops/action-gh-release@v2
         with:
-          name: uxp.tar.gz
-          path: uxp.tar.gz
-          retention-days: 5 # Artifact retention period (adjust as needed)
+          tag_name: v${{ github.run_number }}-${{ github.sha }}
+          name: UXP Source Release (${{ github.run_number }})
+          body: "Automated release of UXP source archive from Pale Moon repository."
+          files: UXP-e59e88bfd59f37fabc15b30ec304f90a410c751f.tar.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
