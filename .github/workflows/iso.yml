@@ -17,9 +17,9 @@ jobs:
 
       - name: Download Archive
         run: |
-          curl -L -o UXP-e59e88bfd59f37fabc15b30ec304f90a410c751f.tar.gz "$ARCHIVE_DOWNLOAD_LINK"
+          curl -L -o UXP-e59e88bfd59f37fabc15b30ec304f90a410c751f.zip "$ARCHIVE_DOWNLOAD_LINK"
         env:
-          ARCHIVE_DOWNLOAD_LINK: "https://repo.palemoon.org/MoonchildProductions/UXP/archive/e59e88bfd59f37fabc15b30ec304f90a410c751f.tar.gz"
+          ARCHIVE_DOWNLOAD_LINK: "https://repo.palemoon.org/MoonchildProductions/UXP/archive/e59e88bfd59f37fabc15b30ec304f90a410c751f.zip"
 
       - name: Create Release and Upload Asset
         uses: softprops/action-gh-release@v2
@@ -27,6 +27,6 @@ jobs:
           tag_name: v${{ github.run_number }}-${{ github.sha }}
           name: UXP Source Release (${{ github.run_number }})
           body: "Automated release of UXP source archive from Pale Moon repository."
-          files: UXP-e59e88bfd59f37fabc15b30ec304f90a410c751f.tar.gz
+          files: UXP-e59e88bfd59f37fabc15b30ec304f90a410c751f.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
