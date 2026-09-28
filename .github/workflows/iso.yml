@@ -23,7 +23,12 @@ jobs:
           
           curl -L -o "$FILENAME" "$ARCHIVE_DOWNLOAD_LINK"
         env:
-          ARCHIVE_DOWNLOAD_LINK: "https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/v2026.09.24.1.tar.gz"
+          ARCHIVE_DOWNLOAD_LINK: "https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/v2026.09.24.1.tar.gz#/basilisk-2026.09.24.1.tar.gz"
+
+      - name: Generate SHA-1 Checksum
+        run: |
+          echo "Generating SHA-1 checksum for ${{ env.FILENAME }}..."
+          sha1sum "${{ env.FILENAME }}"
 
       - name: Create Release and Upload Asset
         uses: softprops/action-gh-release@v2
