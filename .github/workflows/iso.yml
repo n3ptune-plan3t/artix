@@ -23,7 +23,7 @@ jobs:
           
           curl -L -o "$FILENAME" "$ARCHIVE_DOWNLOAD_LINK"
         env:
-          ARCHIVE_DOWNLOAD_LINK: "https://repo.palemoon.org/MoonchildProductions/UXP/archive/e59e88bfd59f37fabc15b30ec304f90a410c751f.tar.gz#/e59e88bfd59f37fabc15b30ec304f90a410c751f.tar.gz"
+          ARCHIVE_DOWNLOAD_LINK: "https://repo.palemoon.org/MoonchildProductions/UXP/archive/master.tar.gz"
 
       - name: Generate SHA-1 Checksum
         run: |
